@@ -1,128 +1,46 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
+<html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>CHARGESPOT | Live Transport</title>
 <style>
-:root{
-  --blue:#006cff; --navy:#070a2a; --panel:#101538; --white:#fff;
-  --muted:#aeb8d0; --line:#2c345d; --yellow:#ffd02f; --red:#ef3340;
-}
-*{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--navy);color:var(--white);
-font-family:Arial,Helvetica,sans-serif}
-body{width:100vw;height:100vh}
-#screen{height:100vh;display:grid;grid-template-rows:82px 66px 1fr 42px;background:var(--navy)}
-.cta{background:var(--blue);display:flex;align-items:center;justify-content:center;gap:16px;
-font-size:34px;font-weight:900;letter-spacing:.4px}
-.tap{width:40px;height:40px;border:3px solid white;border-radius:50%;display:grid;place-items:center;font-size:22px}
-.heading{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 26px;border-bottom:1px solid var(--line)}
-.heading .title{grid-column:2;color:var(--yellow);font-size:25px;font-weight:900;letter-spacing:.5px}
-.clock{grid-column:3;justify-self:end;font-size:25px;font-weight:800}
-.grid{padding:16px 18px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;min-height:0}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:15px 18px;overflow:hidden;min-height:0}
-.cardhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
-.stop{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:900}
-.badge{width:38px;height:38px;border-radius:50%;background:var(--red);display:grid;place-items:center;font-weight:900}
-.direction{font-size:14px;color:#d8def0;font-weight:800}
-.labels,.arrival{display:grid;grid-template-columns:70px 1fr 105px;gap:8px;align-items:center}
-.labels{font-size:13px;color:var(--muted);font-weight:800;padding:0 0 5px;border-bottom:1px solid var(--line)}
-.labels span:last-child,.arrival .due{text-align:right}
-.arrival{font-size:20px;font-weight:800;padding:7px 0;border-bottom:1px solid var(--line)}
-.arrival:last-child{border-bottom:0}
-.route{font-size:22px}
-.destination{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.due{font-size:20px}
-.due.soon{color:var(--yellow);font-weight:900}
-.empty{padding:16px 0;color:var(--muted);font-size:17px}
-.footer{display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-top:1px solid var(--line);
-background:#04061d;color:#d4d9e8;font-size:14px}
-.brand{font-weight:900;letter-spacing:1px}.brand b{color:#66a8ff}
-.errorbar{position:fixed;left:50%;bottom:48px;transform:translateX(-50%);background:#681d25;border:1px solid #b64a55;
-padding:7px 14px;border-radius:8px;font-size:13px;display:none}
-@media(max-height:650px){
- #screen{grid-template-rows:68px 54px 1fr 34px}.cta{font-size:27px}.grid{padding:10px;gap:9px}
- .card{padding:10px 14px}.arrival{padding:4px 0}.badge{width:32px;height:32px}.stop{font-size:18px}
-}
-</style>
-</head>
-<body>
+:root{--blue:#006cff;--navy:#070a2a;--panel:#101538;--white:#fff;--muted:#aeb8d0;--line:#2c345d;--yellow:#ffd02f;--red:#ef3340}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--navy);color:#fff;font-family:Arial,Helvetica,sans-serif}
+#screen{height:100vh;display:grid;grid-template-rows:60px 46px 1fr 30px}
+.cta{background:var(--blue);display:flex;align-items:center;justify-content:center;gap:12px;font-size:23px;font-weight:900}
+.tap{width:29px;height:29px;border:2px solid #fff;border-radius:50%;display:grid;place-items:center;font-size:16px}
+.heading{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 16px;border-bottom:1px solid var(--line)}
+.title{grid-column:2;color:var(--yellow);font-size:18px;font-weight:900}.clock{grid-column:3;justify-self:end;font-size:18px;font-weight:800}
+.grid{padding:8px 10px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:7px;min-height:0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:8px 11px;overflow:hidden;min-height:0}
+.cardhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+.stop{display:flex;align-items:center;gap:7px;font-size:16px;font-weight:900}.badge{width:27px;height:27px;border-radius:50%;background:var(--red);display:grid;place-items:center;font-size:13px;font-weight:900}
+.direction{font-size:10px;color:#d8def0;font-weight:800}
+.labels,.arrival{display:grid;grid-template-columns:52px 1fr 78px;gap:6px;align-items:center}
+.labels{font-size:10px;color:var(--muted);font-weight:800;padding-bottom:3px;border-bottom:1px solid var(--line)}
+.labels span:last-child,.due{text-align:right}
+.arrival{font-size:14px;font-weight:800;padding:3px 0;border-bottom:1px solid var(--line)}
+.route{font-size:16px}.destination{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.due{font-size:14px}.soon{color:var(--yellow)!important;font-weight:900}
+.empty{padding:10px 0;color:var(--muted);font-size:12px}
+.footer{display:flex;align-items:center;justify-content:space-between;padding:0 12px;border-top:1px solid var(--line);background:#04061d;color:#d4d9e8;font-size:10px}
+.brand{font-weight:900;letter-spacing:.6px}.brand b{color:#66a8ff}
+.errorbar{position:fixed;left:50%;bottom:34px;transform:translateX(-50%);background:#681d25;padding:5px 10px;border-radius:6px;font-size:10px;display:none}
+</style></head><body>
 <div id="screen">
-  <header class="cta"><span class="tap">☝</span><span>TAP SCREEN TO RENT A POWER BANK</span></header>
-  <section class="heading">
-    <div></div><div class="title">LIVE TRANSPORT INFORMATION</div><div id="clock" class="clock">--:--</div>
-  </section>
-  <main class="grid">
-    <section class="card" data-stop="490007119N" data-routes="356">
-      <div class="cardhead"><div class="stop"><span class="badge">N</span>Garlies Road</div><div class="direction">NORTHBOUND</div></div>
-      <div class="labels"><span>Route</span><span>Destination</span><span>Arrival</span></div><div class="rows"></div>
-    </section>
-    <section class="card" data-stop="490012145W" data-routes="75,356">
-      <div class="cardhead"><div class="stop"><span class="badge">W</span>Siddons Road</div><div class="direction">WESTBOUND</div></div>
-      <div class="labels"><span>Route</span><span>Destination</span><span>Arrival</span></div><div class="rows"></div>
-    </section>
-    <section class="card" data-stop="490007119S" data-routes="356">
-      <div class="cardhead"><div class="stop"><span class="badge">S</span>Garlies Road</div><div class="direction">SOUTHBOUND</div></div>
-      <div class="labels"><span>Route</span><span>Destination</span><span>Arrival</span></div><div class="rows"></div>
-    </section>
-    <section class="card" data-stop="490012145E" data-routes="75,356">
-      <div class="cardhead"><div class="stop"><span class="badge">E</span>Siddons Road</div><div class="direction">EASTBOUND</div></div>
-      <div class="labels"><span>Route</span><span>Destination</span><span>Arrival</span></div><div class="rows"></div>
-    </section>
-  </main>
-  <footer class="footer"><span>Transport data provided by Transport for London • Updates every 30 seconds</span>
-    <span class="brand">POWERED BY <b>CHARGESPOT</b></span></footer>
-</div>
-<div id="errorbar" class="errorbar">Live data temporarily unavailable — retrying automatically</div>
+<header class="cta"><span class="tap">☝</span><span>TAP SCREEN TO RENT A POWER BANK</span></header>
+<section class="heading"><div></div><div class="title">LIVE TRANSPORT INFORMATION</div><div id="clock" class="clock">--:--</div></section>
+<main class="grid">
+<section class="card" data-stop="490007119N" data-routes="356"><div class="cardhead"><div class="stop"><span class="badge">N</span>Garlies Road</div><div class="direction">NORTHBOUND</div></div><div class="labels"><span>Route</span><span>Destination</span><span>Arrival</span></div><div class="rows"></div></section>
+<section class="card" data-stop="490012145W" data-routes="75,356"><div class="cardhead"><div class="stop"><span class="badge">W</span>Siddons Road</div><div class="direction">WESTBOUND</div></div><div class="labels"><span>Route</span><span>Destination</span><span>Arrival</span></div><div class="rows"></div></section>
+<section class="card" data-stop="490007119S" data-routes="356"><div class="cardhead"><div class="stop"><span class="badge">S</span>Garlies Road</div><div class="direction">SOUTHBOUND</div></div><div class="labels"><span>Route</span><span>Destination</span><span>Arrival</span></div><div class="rows"></div></section>
+<section class="card" data-stop="490012145E" data-routes="75,356"><div class="cardhead"><div class="stop"><span class="badge">E</span>Siddons Road</div><div class="direction">EASTBOUND</div></div><div class="labels"><span>Route</span><span>Destination</span><span>Arrival</span></div><div class="rows"></div></section>
+</main>
+<footer class="footer"><span>Transport data provided by Transport for London • Updates every 30 seconds</span><span class="brand">POWERED BY <b>CHARGESPOT</b></span></footer>
+</div><div id="errorbar" class="errorbar">Live data temporarily unavailable — retrying automatically</div>
 <script>
-const API = "https://api.tfl.gov.uk/StopPoint/";
-const MAX_ROWS = 4;
-
-function updateClock(){
-  document.getElementById("clock").textContent =
-    new Intl.DateTimeFormat("en-GB",{hour:"2-digit",minute:"2-digit",hour12:false,timeZone:"Europe/London"}).format(new Date());
-}
-function minsText(seconds){
-  if(seconds <= 45) return "Due";
-  const m=Math.max(1,Math.round(seconds/60));
-  return m+" min"+(m===1?"":"s");
-}
-function normaliseDestination(s){
-  if(!s) return "—";
-  return s.replace(/\s+Station$/i," Station").replace(/\s+/g," ").trim();
-}
-async function loadCard(card){
-  const stop=card.dataset.stop;
-  const allowed=new Set(card.dataset.routes.split(","));
-  const rows=card.querySelector(".rows");
-  try{
-    const r=await fetch(API+encodeURIComponent(stop)+"/Arrivals",{cache:"no-store"});
-    if(!r.ok) throw new Error("TfL "+r.status);
-    let data=await r.json();
-    data=data.filter(x=>allowed.has(String(x.lineId||x.lineName)))
-      .sort((a,b)=>(a.timeToStation||999999)-(b.timeToStation||999999))
-      .slice(0,MAX_ROWS);
-    if(!data.length){rows.innerHTML='<div class="empty">No upcoming services currently shown.</div>';return true;}
-    rows.innerHTML=data.map(x=>{
-      const sec=Number(x.timeToStation||0);
-      const soon=sec<=180?" soon":"";
-      return `<div class="arrival"><span class="route">${x.lineName||x.lineId}</span>`+
-        `<span class="destination">${normaliseDestination(x.destinationName)}</span>`+
-        `<span class="due${soon}">${minsText(sec)}</span></div>`;
-    }).join("");
-    return true;
-  }catch(e){
-    if(!rows.children.length) rows.innerHTML='<div class="empty">Connecting to live TfL data…</div>';
-    return false;
-  }
-}
-async function refresh(){
-  const results=await Promise.all([...document.querySelectorAll(".card")].map(loadCard));
-  document.getElementById("errorbar").style.display=results.some(x=>!x)?"block":"none";
-}
-updateClock(); setInterval(updateClock,1000);
-refresh(); setInterval(refresh,30000);
-</script>
-</body>
-</html>
+const API="https://api.tfl.gov.uk/StopPoint/",MAX_ROWS=7;
+function clock(){document.getElementById("clock").textContent=new Intl.DateTimeFormat("en-GB",{hour:"2-digit",minute:"2-digit",hour12:false,timeZone:"Europe/London"}).format(new Date())}
+function due(s){if(s<=45)return"Due";let m=Math.max(1,Math.round(s/60));return m+" min"+(m===1?"":"s")}
+async function load(c){let rows=c.querySelector(".rows"),allowed=new Set(c.dataset.routes.split(","));try{let r=await fetch(API+c.dataset.stop+"/Arrivals",{cache:"no-store"});if(!r.ok)throw 0;let d=(await r.json()).filter(x=>allowed.has(String(x.lineId||x.lineName))).sort((a,b)=>a.timeToStation-b.timeToStation).slice(0,MAX_ROWS);rows.innerHTML=d.length?d.map(x=>`<div class="arrival"><span class="route">${x.lineName||x.lineId}</span><span class="destination">${x.destinationName||"—"}</span><span class="due ${x.timeToStation<=180?"soon":""}">${due(Number(x.timeToStation||0))}</span></div>`).join(""):'<div class="empty">No upcoming services currently shown.</div>';return true}catch(e){if(!rows.children.length)rows.innerHTML='<div class="empty">Connecting to live TfL data…</div>';return false}}
+async function refresh(){let r=await Promise.all([...document.querySelectorAll(".card")].map(load));document.getElementById("errorbar").style.display=r.some(x=>!x)?"block":"none"}
+clock();setInterval(clock,1000);refresh();setInterval(refresh,30000);
+</script></body></html>
